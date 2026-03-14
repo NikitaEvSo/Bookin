@@ -8,6 +8,7 @@ data class Room(
     val stars: Int,
     val DiscountedCost: Int,
     val Cost: Int,
+    val tags: List<GreenTag> = emptyList(),
     val PrePayment : Boolean
 ){
     fun TextRate(): String {
@@ -21,3 +22,6 @@ data class Room(
         return result
     }
 }
+data class GreenTag(
+    val text: String
+)
