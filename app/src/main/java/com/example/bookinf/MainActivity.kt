@@ -29,6 +29,7 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,13 +37,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.bookinf.data.GreenTag
 import com.example.bookinf.data.Room
 import com.example.bookinf.ui.theme.BookinfTheme
@@ -99,7 +97,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ContentScreen(rooms: List<Room>, modifier: Modifier = Modifier) {
-    // Frame 181
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -109,12 +106,10 @@ fun ContentScreen(rooms: List<Room>, modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(13.dp)
     ) {
-        // message
         MessageBlock(
             text = "Commission paid on bookings and other factors may affect property rankings. Learn about these ranking parameteters and how to select and modify them. Find out more"
         )
 
-        // Frame 178
         Row(
             modifier = Modifier
                 .width(393.dp)
@@ -124,14 +119,11 @@ fun ContentScreen(rooms: List<Room>, modifier: Modifier = Modifier) {
         ) {
             Text(
                 text = "748 properties",
-                fontFamily = FontFamily.SansSerif,
-                fontSize = 14.sp,
-                lineHeight = 23.sp,
+                style = MaterialTheme.typography.bodySmall,
                 color = Color.Black
             )
         }
 
-        // Frame 179
         Column(
             modifier = Modifier.width(393.dp),
             verticalArrangement = Arrangement.spacedBy(13.dp)
@@ -141,7 +133,6 @@ fun ContentScreen(rooms: List<Room>, modifier: Modifier = Modifier) {
             }
         }
 
-        // Quality rating message
         QualityRatingBlock()
     }
 }
@@ -157,9 +148,7 @@ fun MessageBlock(text: String) {
     ) {
         Text(
             text = text,
-            fontFamily = FontFamily.SansSerif,
-            fontSize = 14.sp,
-            lineHeight = 23.sp,
+            style = MaterialTheme.typography.bodySmall,
             color = Color.Black,
             modifier = Modifier.width(256.dp).align(Alignment.CenterStart)
         )
@@ -192,18 +181,13 @@ fun QualityRatingBlock() {
             Column(verticalArrangement = Arrangement.spacedBy(19.dp)) {
                 Text(
                     text = "Properties with these icons have been awarded Booking.com´s quality rating for homes",
-                    fontFamily = FontFamily.SansSerif,
-                    fontSize = 14.sp,
-                    lineHeight = 21.sp,
+                    style = MaterialTheme.typography.bodySmall,
                     color = Color.Black,
                     modifier = Modifier.width(256.dp)
                 )
                 Text(
                     text = "Learn more",
-                    fontFamily = FontFamily.SansSerif,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    lineHeight = 23.sp,
+                    style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold),
                     color = Color(0xFF248DDC)
                 )
             }
@@ -213,7 +197,6 @@ fun QualityRatingBlock() {
 
 @Composable
 fun RoomCard(room: Room) {
-    // Frame 106
     Column(
         modifier = Modifier.defaultMinSize(minHeight = 321.dp)
             .width(393.dp)
@@ -228,7 +211,6 @@ fun RoomCard(room: Room) {
             horizontalArrangement = Arrangement.spacedBy(14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // image
             Box(
                 modifier = Modifier
                     .width(118.dp)
@@ -237,7 +219,6 @@ fun RoomCard(room: Room) {
                         shape = RoundedCornerShape(6.dp))
             )
 
-            // Frame 105
             Column(
                 modifier = Modifier
                     .width(227.dp)
@@ -245,13 +226,11 @@ fun RoomCard(room: Room) {
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                // Frame 102
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    // Group 20
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -259,13 +238,8 @@ fun RoomCard(room: Room) {
                     ) {
                         Text(
                             text = room.Title,
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                            fontStyle = FontStyle.Normal,
-                            textAlign = TextAlign.Start,
-                            lineHeight = 23.sp,
-                            color = Color.Black,
-                            fontFamily = FontFamily.SansSerif
+                            style = MaterialTheme.typography.titleMedium,
+                            color = Color.Black
                         )
                         Icon(
                             imageVector = Icons.Default.FavoriteBorder,
@@ -275,7 +249,6 @@ fun RoomCard(room: Room) {
                         )
                     }
 
-                    // Frame 94
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(3.dp)
@@ -303,7 +276,6 @@ fun RoomCard(room: Room) {
                         )
                     }
 
-                    // Frame 96
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(9.dp)
@@ -311,13 +283,8 @@ fun RoomCard(room: Room) {
                         RatingBox(score = room.Score.toString())
                         Text(
                             text = room.TextRate(),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Medium,
-                            fontStyle = FontStyle.Normal,
-                            textAlign = TextAlign.Start,
-                            lineHeight = 23.sp,
-                            color = Color.Black,
-                            fontFamily = FontFamily.SansSerif
+                            style = MaterialTheme.typography.titleSmall,
+                            color = Color.Black
                         )
                         Box(
                             modifier = Modifier
@@ -326,19 +293,12 @@ fun RoomCard(room: Room) {
                         )
                         Text(
                             text = "${room.Reviews} reviews",
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Medium,
-                            fontStyle = FontStyle.Normal,
-                            textAlign = TextAlign.Start,
-                            lineHeight = 23.sp,
-                            color = Color(0xFF434343),
-                            fontFamily = FontFamily.SansSerif
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = Color(0xFF434343)
                         )
                     }
 
-                    // Frame 100
                     Column(verticalArrangement = Arrangement.spacedBy(0.dp)) {
-                        // Frame 97
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(5.dp)
@@ -351,13 +311,8 @@ fun RoomCard(room: Room) {
                             )
                             Text(
                                 text = "Example",
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontStyle = FontStyle.Normal,
-                                textAlign = TextAlign.Start,
-                                lineHeight = 23.sp,
-                                color = Color.Black,
-                                fontFamily = FontFamily.SansSerif
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Color.Black
                             )
                             Box(
                                 modifier = Modifier
@@ -366,16 +321,10 @@ fun RoomCard(room: Room) {
                             )
                             Text(
                                 text = "${(room.Distance / 1000.0)} km from centre",
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontStyle = FontStyle.Normal,
-                                textAlign = TextAlign.Start,
-                                lineHeight = 23.sp,
-                                color = Color.Black,
-                                fontFamily = FontFamily.SansSerif
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Color.Black
                             )
                         }
-                        // Group 21
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(5.dp)
@@ -388,41 +337,30 @@ fun RoomCard(room: Room) {
                             )
                             Text(
                                 text = "Sustainability certification",
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontStyle = FontStyle.Normal,
-                                textAlign = TextAlign.Start,
-                                lineHeight = 23.sp,
-                                color = Color.Black,
-                                fontFamily = FontFamily.SansSerif
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Color.Black
                             )
                         }
                     }
 
                     room.tags.forEach { tag ->
-                        // Frame 101
-                    Box(
-                        modifier = Modifier
-                            .width(118.dp)
-                            .height(23.dp)
-                            .background(color = Color(0xFF1B8947), shape = RoundedCornerShape(4.dp)),
-                        contentAlignment = Alignment.Center
-                    ) {
+                        Box(
+                            modifier = Modifier
+                                .width(118.dp)
+                                .height(23.dp)
+                                .background(color = Color(0xFF1B8947), shape = RoundedCornerShape(4.dp)),
+                            contentAlignment = Alignment.Center
+                        ) {
                             Text(
                                 text = tag.text,
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontStyle = FontStyle.Normal,
-                                textAlign = TextAlign.Center,
-                                lineHeight = 23.sp,
+                                style = MaterialTheme.typography.bodyMedium,
                                 color = Color.White,
-                                fontFamily = FontFamily.SansSerif
+                                textAlign = TextAlign.Center
                             )
                         }
                     }
                 }
 
-                // Frame 104
                 Column(
                     modifier = Modifier.width(170.dp),
                     horizontalAlignment = Alignment.End,
@@ -430,71 +368,45 @@ fun RoomCard(room: Room) {
                 ) {
                     Text(
                         text = "Hotel room: 2 beds",
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        fontStyle = FontStyle.Normal,
-                        textAlign = TextAlign.End,
-                        lineHeight = 23.sp,
+                        style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
                         color = Color.Black,
-                        fontFamily = FontFamily.SansSerif
+                        textAlign = TextAlign.End
                     )
                     Text(
                         text = "Price for 1 night, 2 adults",
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Medium,
-                        fontStyle = FontStyle.Normal,
-                        textAlign = TextAlign.End,
-                        lineHeight = 23.sp,
+                        style = MaterialTheme.typography.labelMedium,
                         color = Color.Black,
-                        fontFamily = FontFamily.SansSerif
+                        textAlign = TextAlign.End
                     )
-                    // Frame 103
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(3.dp)
                     ) {
                         Text(
                             text = "€${room.Cost}",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium,
-                            fontStyle = FontStyle.Normal,
-                            textAlign = TextAlign.End,
-                            lineHeight = 23.sp,
+                            style = MaterialTheme.typography.bodySmall,
                             color = Color(0xFFC0060E),
                             textDecoration = TextDecoration.LineThrough,
-                            fontFamily = FontFamily.SansSerif
+                            textAlign = TextAlign.End
                         )
                         Text(
                             text = "€${room.DiscountedCost}",
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
-                            fontStyle = FontStyle.Normal,
-                            textAlign = TextAlign.End,
-                            lineHeight = 23.sp,
+                            style = MaterialTheme.typography.labelLarge,
                             color = Color.Black,
-                            fontFamily = FontFamily.SansSerif
+                            textAlign = TextAlign.End
                         )
                     }
                     Text(
                         text = "Includes taxes and charges",
-                        fontSize = 13.sp,
-                        softWrap = false,
-                        fontWeight = FontWeight.Medium,
-                        fontStyle = FontStyle.Normal,
-                        textAlign = TextAlign.End,
-                        lineHeight = 23.sp,
+                        style = MaterialTheme.typography.labelMedium,
                         color = Color(0xFF767373),
-                        fontFamily = FontFamily.SansSerif
+                        textAlign = TextAlign.End
                     )
                     Text(
                         text = "Only 1 left at this price on Booking.com",
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Medium,
-                        fontStyle = FontStyle.Normal,
-                        textAlign = TextAlign.Right,
-                        lineHeight = 19.sp,
+                        style = MaterialTheme.typography.labelSmall,
                         color = Color(0xFFC0060E),
-                        fontFamily = FontFamily.SansSerif,
+                        textAlign = TextAlign.Right,
                         modifier = Modifier.width(158.dp)
                     )
                     if (room.PrePayment) {
@@ -510,13 +422,9 @@ fun RoomCard(room: Room) {
                             )
                             Text(
                                 text = "No prepayment needed",
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Bold,
-                                fontStyle = FontStyle.Normal,
-                                textAlign = TextAlign.End,
-                                lineHeight = 23.sp,
+                                style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
                                 color = Color.Black,
-                                fontFamily = FontFamily.SansSerif
+                                textAlign = TextAlign.End
                             )
                         }
                     }
@@ -540,13 +448,8 @@ fun RatingBox(score: String) {
     ) {
         Text(
             text = score,
-            fontSize = 15.sp,
-            fontWeight = FontWeight.Normal,
-            fontStyle = FontStyle.Normal,
-            textAlign = TextAlign.Center,
-            lineHeight = 23.sp,
-            color = Color.White,
-            fontFamily = FontFamily.SansSerif
+            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Normal, color = Color.White),
+            textAlign = TextAlign.Center
         )
     }
 }
