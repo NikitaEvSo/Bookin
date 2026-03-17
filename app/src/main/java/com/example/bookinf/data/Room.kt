@@ -1,27 +1,33 @@
 package com.example.bookinf.data
 
+import java.util.Locale
+
 data class Room(
-    val Title: String,
-    val Score: Float,
-    val Reviews: Int,
-    val Distance: Int,
+    val title: String,
+    val score: Float,
+    val reviews: Int,
+    val distanceMeters: Int,
     val stars: Int,
-    val DiscountedCost: Int,
-    val Cost: Int,
+    val discountedCost: Int,
+    val originalCost: Int,
     val tags: List<GreenTag> = emptyList(),
-    val PrePayment : Boolean
-){
-    fun TextRate(): String {
-        var result: String = "N/A"
-        if(Score>7) {
-            result = "Good"
+    val isPrepaymentNeeded: Boolean
+) {
+    val ratingText: String
+        get() = when {
+            score > 8 -> "Fabulous"
+            score > 7 -> "Good"
+            else -> "N/A"
         }
-        if(Score>8){
-            result = "Fabulous"
+
+    val formattedDistance: String
+        get() = if (distanceMeters >= 1000) {
+            String.format(Locale.US, "%.1f km from centre", distanceMeters / 1000.0)
+        } else {
+            "${distanceMeters}m from centre"
         }
-        return result
-    }
 }
+
 data class GreenTag(
     val text: String
 )
