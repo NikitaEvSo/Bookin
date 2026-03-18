@@ -27,8 +27,6 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -289,16 +287,15 @@ private fun TopInfoSection(room: Room) {
         ) {
             repeat(room.stars) {
                 Icon(
-                    imageVector = Icons.Default.Star,
+                    painter = painterResource(R.drawable.star),
                     contentDescription = null,
                     tint = Color(0xFFF9BA2B),
                     modifier = Modifier.size(17.dp)
                 )
             }
-            Icon(
-                imageVector = Icons.Default.ThumbUp,
+            Image(
+                painter = painterResource(R.drawable.thumb),
                 contentDescription = null,
-                tint = Color(0xFFF9BA2B),
                 modifier = Modifier.size(16.dp)
             )
             Image(
