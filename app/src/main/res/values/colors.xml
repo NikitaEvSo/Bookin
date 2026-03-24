@@ -7,4 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="background_light_gray">#FFF5F5F5</color>
+    <color name="border_light_gray">#FFE9E9E9</color>
+    <color name="rating_yellow">#FFFCB800</color>
+    <color name="link_blue">#FF248DDC</color>
+    <color name="placeholder_gray">#FFEBEBEB</color>
+    <color name="divider_gray">#FFE3E3E3</color>
+    <color name="icon_dark_gray">#FF424141</color>
+    <color name="star_yellow">#FFF9BA2B</color>
+    <color name="text_dark_gray">#FF434343</color>
+    <color name="text_medium_gray">#FF767373</color>
+    <color name="alert_red">#FFC0060E</color>
+    <color name="tag_green">#FF1B8947</color>
+    <color name="booking_blue">#FF003C94</color>
 </resources>

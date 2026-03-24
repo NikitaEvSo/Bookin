@@ -46,7 +46,20 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.bookinf.data.GreenTag
 import com.example.bookinf.data.Room
+import com.example.bookinf.ui.theme.AlertRed
+import com.example.bookinf.ui.theme.BackgroundLightGray
 import com.example.bookinf.ui.theme.BookinfTheme
+import com.example.bookinf.ui.theme.BookingBlue
+import com.example.bookinf.ui.theme.BorderLightGray
+import com.example.bookinf.ui.theme.DividerGray
+import com.example.bookinf.ui.theme.IconDarkGray
+import com.example.bookinf.ui.theme.LinkBlue
+import com.example.bookinf.ui.theme.PlaceholderGray
+import com.example.bookinf.ui.theme.RatingYellow
+import com.example.bookinf.ui.theme.StarYellow
+import com.example.bookinf.ui.theme.TagGreen
+import com.example.bookinf.ui.theme.TextDarkGray
+import com.example.bookinf.ui.theme.TextMediumGray
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,7 +121,7 @@ fun ContentScreen(rooms: List<Room>, modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5F5)),
+            .background(BackgroundLightGray),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(13.dp)
     ) {
@@ -161,7 +174,7 @@ fun MessageBlock(text: String) {
             .height(141.dp),
         color = Color.White,
         shape = RoundedCornerShape(6.dp),
-        border = BorderStroke(1.dp, Color(0xFFE9E9E9))
+        border = BorderStroke(1.dp, BorderLightGray)
     ) {
         Box(modifier = Modifier.padding(17.dp)) {
             Text(
@@ -182,7 +195,7 @@ fun QualityRatingBlock() {
             .height(141.dp),
         color = Color.White,
         shape = RoundedCornerShape(6.dp),
-        border = BorderStroke(1.dp, Color(0xFFE9E9E9))
+        border = BorderStroke(1.dp, BorderLightGray)
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
@@ -191,7 +204,7 @@ fun QualityRatingBlock() {
             Box(
                 modifier = Modifier
                     .size(19.dp)
-                    .background(Color(0xFFFCB800), shape = RoundedCornerShape(3.dp)),
+                    .background(RatingYellow, shape = RoundedCornerShape(3.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Box(
@@ -211,7 +224,7 @@ fun QualityRatingBlock() {
                 Text(
                     text = "Learn more",
                     style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold),
-                    color = Color(0xFF248DDC)
+                    color = LinkBlue
                 )
             }
         }
@@ -239,7 +252,7 @@ fun RoomCard(room: Room) {
                     modifier = Modifier
                         .width(118.dp)
                         .height(306.dp)
-                        .background(color = Color(0xFFEBEBEB), shape = RoundedCornerShape(6.dp))
+                        .background(color = PlaceholderGray, shape = RoundedCornerShape(6.dp))
                 )
 
                 Column(
@@ -252,7 +265,7 @@ fun RoomCard(room: Room) {
                     BottomPriceSection(room)
                 }
             }
-            HorizontalDivider(thickness = 1.dp, color = Color(0xFFE3E3E3))
+            HorizontalDivider(thickness = 1.dp, color = DividerGray)
         }
     }
 }
@@ -277,7 +290,7 @@ private fun TopInfoSection(room: Room) {
                 imageVector = Icons.Default.FavoriteBorder,
                 contentDescription = "Favorite",
                 modifier = Modifier.size(18.dp),
-                tint = Color(0xFF424141)
+                tint = IconDarkGray
             )
         }
 
@@ -289,7 +302,7 @@ private fun TopInfoSection(room: Room) {
                 Icon(
                     painter = painterResource(R.drawable.star),
                     contentDescription = null,
-                    tint = Color(0xFFF9BA2B),
+                    tint = StarYellow,
                     modifier = Modifier.size(17.dp)
                 )
             }
@@ -321,7 +334,7 @@ private fun TopInfoSection(room: Room) {
             Text(
                 text = "${room.reviews} reviews",
                 style = MaterialTheme.typography.bodyLarge,
-                color = Color(0xFF434343)
+                color = TextDarkGray
             )
         }
 
@@ -400,13 +413,13 @@ private fun BottomPriceSection(room: Room) {
         Text(
             text = "Includes taxes and charges",
             style = MaterialTheme.typography.labelMedium,
-            color = Color(0xFF767373),
+            color = TextMediumGray,
             textAlign = TextAlign.End
         )
         Text(
             text = "Only 1 left at this price on Booking.com",
             style = MaterialTheme.typography.labelSmall,
-            color = Color(0xFFC0060E),
+            color = AlertRed,
             textAlign = TextAlign.Right,
             modifier = Modifier.width(158.dp)
         )
@@ -426,7 +439,7 @@ private fun PriceRow(room: Room) {
             Text(
                 text = "€${room.originalCost}",
                 style = MaterialTheme.typography.bodySmall,
-                color = Color(0xFFC0060E),
+                color = AlertRed,
                 textDecoration = TextDecoration.LineThrough,
                 textAlign = TextAlign.End
             )
@@ -467,7 +480,7 @@ fun TagLabel(text: String) {
         modifier = Modifier
             .width(118.dp)
             .height(23.dp)
-            .background(color = Color(0xFF1B8947), shape = RoundedCornerShape(4.dp)),
+            .background(color = TagGreen, shape = RoundedCornerShape(4.dp)),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -485,7 +498,7 @@ fun RatingBox(score: String) {
         modifier = Modifier
             .size(30.dp, 32.dp)
             .background(
-                color = Color(0xFF003C94),
+                color = BookingBlue,
                 shape = RoundedCornerShape(topStart = 6.dp, topEnd = 6.dp, bottomEnd = 6.dp, bottomStart = 0.dp)
             ),
         contentAlignment = Alignment.Center
@@ -499,7 +512,7 @@ fun RatingBox(score: String) {
 }
 
 @Composable
-fun DotSeparator(size: Dp = 4.dp, color: Color = Color(0xFF434343)) {
+fun DotSeparator(size: Dp = 4.dp, color: Color = TextDarkGray) {
     Box(
         modifier = Modifier
             .size(size)
