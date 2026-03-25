@@ -1,29 +1,24 @@
 package com.example.bookinf.ui.theme
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import com.example.bookinf.R
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+// Primary Brand Colors
+val BookingBlue = Color(0xFF003C94)
+val LinkBlue = Color(0xFF248DDC)
+val TagGreen = Color(0xFF1B8947)
+val AlertRed = Color(0xFFC0060E)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// UI Accents
+val RatingYellow = Color(0xFFFCB800)
+val StarYellow = Color(0xFFF9BA2B)
 
-// App Colors - mapping to XML resources
-val BackgroundLightGray @Composable get() = colorResource(R.color.background_light_gray)
-val BorderLightGray @Composable get() = colorResource(R.color.border_light_gray)
-val RatingYellow @Composable get() = colorResource(R.color.rating_yellow)
-val LinkBlue @Composable get() = colorResource(R.color.link_blue)
-val PlaceholderGray @Composable get() = colorResource(R.color.placeholder_gray)
-val DividerGray @Composable get() = colorResource(R.color.divider_gray)
-val IconDarkGray @Composable get() = colorResource(R.color.icon_dark_gray)
-val StarYellow @Composable get() = colorResource(R.color.star_yellow)
-val TextDarkGray @Composable get() = colorResource(R.color.text_dark_gray)
-val TextMediumGray @Composable get() = colorResource(R.color.text_medium_gray)
-val AlertRed @Composable get() = colorResource(R.color.alert_red)
-val TagGreen @Composable get() = colorResource(R.color.tag_green)
-val BookingBlue @Composable get() = colorResource(R.color.booking_blue)
+// Grays & Backgrounds
+val BackgroundLightGray = Color(0xFFF5F5F5)
+val BorderLightGray = Color(0xFFE9E9E9)
+val DividerGray = Color(0xFFE3E3E3)
+val PlaceholderGray = Color(0xFFEBEBEB)
+
+// Text & Icons
+val TextDarkGray = Color(0xFF434343)
+val TextMediumGray = Color(0xFF767373)
+val IconDarkGray = Color(0xFF424141)

@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -235,8 +235,7 @@ fun QualityRatingBlock() {
 fun RoomCard(room: Room) {
     Surface(
         modifier = Modifier
-            .width(393.dp)
-            .defaultMinSize(minHeight = 321.dp),
+            .width(393.dp),
         color = Color.White
     ) {
         Column {
@@ -251,7 +250,7 @@ fun RoomCard(room: Room) {
                 Box(
                     modifier = Modifier
                         .width(118.dp)
-                        .height(306.dp)
+                        .fillMaxHeight()
                         .background(color = PlaceholderGray, shape = RoundedCornerShape(6.dp))
                 )
 
@@ -259,7 +258,7 @@ fun RoomCard(room: Room) {
                     modifier = Modifier
                         .weight(1f)
                         .height(308.dp),
-                    verticalArrangement = Arrangement.SpaceBetween
+
                 ) {
                     TopInfoSection(room)
                     BottomPriceSection(room)
