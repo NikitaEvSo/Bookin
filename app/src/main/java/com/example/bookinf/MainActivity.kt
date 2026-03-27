@@ -46,20 +46,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.bookinf.data.GreenTag
 import com.example.bookinf.data.Room
-import com.example.bookinf.ui.theme.AlertRed
-import com.example.bookinf.ui.theme.BackgroundLightGray
 import com.example.bookinf.ui.theme.BookinfTheme
-import com.example.bookinf.ui.theme.BookingBlue
-import com.example.bookinf.ui.theme.BorderLightGray
-import com.example.bookinf.ui.theme.DividerGray
-import com.example.bookinf.ui.theme.IconDarkGray
-import com.example.bookinf.ui.theme.LinkBlue
-import com.example.bookinf.ui.theme.PlaceholderGray
-import com.example.bookinf.ui.theme.RatingYellow
-import com.example.bookinf.ui.theme.StarYellow
-import com.example.bookinf.ui.theme.TagGreen
-import com.example.bookinf.ui.theme.TextDarkGray
-import com.example.bookinf.ui.theme.TextMediumGray
+import com.example.bookinf.ui.theme.customColors
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -121,7 +109,7 @@ fun ContentScreen(rooms: List<Room>, modifier: Modifier = Modifier) {
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(BackgroundLightGray),
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(13.dp)
     ) {
@@ -161,7 +149,7 @@ private fun PropertiesCountRow(count: Int) {
         Text(
             text = "$count properties",
             style = MaterialTheme.typography.bodySmall,
-            color = Color.Black
+            color = MaterialTheme.colorScheme.onBackground
         )
     }
 }
@@ -172,15 +160,15 @@ fun MessageBlock(text: String) {
         modifier = Modifier
             .width(360.dp)
             .height(141.dp),
-        color = Color.White,
+        color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(6.dp),
-        border = BorderStroke(1.dp, BorderLightGray)
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Box(modifier = Modifier.padding(17.dp)) {
             Text(
                 text = text,
                 style = MaterialTheme.typography.bodySmall,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.width(256.dp).align(Alignment.CenterStart)
             )
         }
@@ -193,9 +181,9 @@ fun QualityRatingBlock() {
         modifier = Modifier
             .width(360.dp)
             .height(141.dp),
-        color = Color.White,
+        color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(6.dp),
-        border = BorderStroke(1.dp, BorderLightGray)
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
@@ -204,13 +192,13 @@ fun QualityRatingBlock() {
             Box(
                 modifier = Modifier
                     .size(19.dp)
-                    .background(RatingYellow, shape = RoundedCornerShape(3.dp)),
+                    .background(MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(3.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Box(
                     modifier = Modifier
                         .size(8.dp)
-                        .background(Color.White, shape = RoundedCornerShape(50))
+                        .background(MaterialTheme.colorScheme.onSecondary, shape = RoundedCornerShape(50))
                 )
             }
 
@@ -218,13 +206,13 @@ fun QualityRatingBlock() {
                 Text(
                     text = "Properties with these icons have been awarded Booking.com´s quality rating for homes",
                     style = MaterialTheme.typography.bodySmall,
-                    color = Color.Black,
+                    color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.width(256.dp)
                 )
                 Text(
                     text = "Learn more",
                     style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.SemiBold),
-                    color = LinkBlue
+                    color = MaterialTheme.customColors.socialVk
                 )
             }
         }
@@ -236,7 +224,7 @@ fun RoomCard(room: Room) {
     Surface(
         modifier = Modifier
             .width(393.dp),
-        color = Color.White
+        color = MaterialTheme.colorScheme.surface
     ) {
         Column {
             Row(
@@ -251,7 +239,7 @@ fun RoomCard(room: Room) {
                     modifier = Modifier
                         .width(118.dp)
                         .fillMaxHeight()
-                        .background(color = PlaceholderGray, shape = RoundedCornerShape(6.dp))
+                        .background(color = MaterialTheme.colorScheme.surfaceVariant, shape = RoundedCornerShape(6.dp))
                 )
 
                 Column(
@@ -264,7 +252,7 @@ fun RoomCard(room: Room) {
                     BottomPriceSection(room)
                 }
             }
-            HorizontalDivider(thickness = 1.dp, color = DividerGray)
+            HorizontalDivider(thickness = 1.dp, color = MaterialTheme.colorScheme.outline)
         }
     }
 }
@@ -283,13 +271,13 @@ private fun TopInfoSection(room: Room) {
             Text(
                 text = room.title,
                 style = MaterialTheme.typography.titleMedium,
-                color = Color.Black
+                color = MaterialTheme.colorScheme.onSurface
             )
             Icon(
                 imageVector = Icons.Default.FavoriteBorder,
                 contentDescription = "Favorite",
                 modifier = Modifier.size(18.dp),
-                tint = IconDarkGray
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
@@ -301,7 +289,7 @@ private fun TopInfoSection(room: Room) {
                 Icon(
                     painter = painterResource(R.drawable.star),
                     contentDescription = null,
-                    tint = StarYellow,
+                    tint = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.size(17.dp)
                 )
             }
@@ -327,13 +315,13 @@ private fun TopInfoSection(room: Room) {
             Text(
                 text = room.ratingText,
                 style = MaterialTheme.typography.titleSmall,
-                color = Color.Black
+                color = MaterialTheme.colorScheme.onSurface
             )
             DotSeparator()
             Text(
                 text = "${room.reviews} reviews",
                 style = MaterialTheme.typography.bodyLarge,
-                color = TextDarkGray
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
@@ -356,18 +344,18 @@ private fun LocationAndCertification(room: Room) {
                 imageVector = Icons.Default.LocationOn,
                 contentDescription = null,
                 modifier = Modifier.size(14.dp),
-                tint = Color.Black
+                tint = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = "Example",
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color.Black
+                color = MaterialTheme.colorScheme.onSurface
             )
-            DotSeparator(size = 3.dp, color = Color.Black)
+            DotSeparator(size = 3.dp, color = MaterialTheme.colorScheme.onSurface)
             Text(
                 text = room.formattedDistance,
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color.Black
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
         Row(
@@ -378,12 +366,12 @@ private fun LocationAndCertification(room: Room) {
                 imageVector = Icons.Default.CheckCircle,
                 contentDescription = null,
                 modifier = Modifier.size(14.dp),
-                tint = Color.Black
+                tint = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = "Sustainability certification",
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color.Black
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
     }
@@ -399,26 +387,26 @@ private fun BottomPriceSection(room: Room) {
         Text(
             text = "Hotel room: 2 beds",
             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-            color = Color.Black,
+            color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.End
         )
         Text(
             text = "Price for 1 night, 2 adults",
             style = MaterialTheme.typography.labelMedium,
-            color = Color.Black,
+            color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.End
         )
         PriceRow(room)
         Text(
             text = "Includes taxes and charges",
             style = MaterialTheme.typography.labelMedium,
-            color = TextMediumGray,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.End
         )
         Text(
             text = "Only 1 left at this price on Booking.com",
             style = MaterialTheme.typography.labelSmall,
-            color = AlertRed,
+            color = MaterialTheme.colorScheme.error,
             textAlign = TextAlign.Right,
             modifier = Modifier.width(158.dp)
         )
@@ -438,7 +426,7 @@ private fun PriceRow(room: Room) {
             Text(
                 text = "€${room.originalCost}",
                 style = MaterialTheme.typography.bodySmall,
-                color = AlertRed,
+                color = MaterialTheme.colorScheme.error,
                 textDecoration = TextDecoration.LineThrough,
                 textAlign = TextAlign.End
             )
@@ -446,7 +434,7 @@ private fun PriceRow(room: Room) {
         Text(
             text = "€${room.discountedCost}",
             style = MaterialTheme.typography.labelLarge,
-            color = Color.Black,
+            color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.End
         )
     }
@@ -461,13 +449,13 @@ private fun NoPrepaymentRow() {
         Icon(
             imageVector = Icons.Default.Check,
             contentDescription = null,
-            tint = Color.Black,
+            tint = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.size(13.dp)
         )
         Text(
             text = "No prepayment needed",
             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-            color = Color.Black,
+            color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.End
         )
     }
@@ -479,13 +467,13 @@ fun TagLabel(text: String) {
         modifier = Modifier
             .width(118.dp)
             .height(23.dp)
-            .background(color = TagGreen, shape = RoundedCornerShape(4.dp)),
+            .background(color = MaterialTheme.colorScheme.tertiary, shape = RoundedCornerShape(4.dp)),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium,
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onTertiary,
             textAlign = TextAlign.Center
         )
     }
@@ -497,21 +485,21 @@ fun RatingBox(score: String) {
         modifier = Modifier
             .size(30.dp, 32.dp)
             .background(
-                color = BookingBlue,
+                color = MaterialTheme.colorScheme.primary,
                 shape = RoundedCornerShape(topStart = 6.dp, topEnd = 6.dp, bottomEnd = 6.dp, bottomStart = 0.dp)
             ),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = score,
-            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Normal, color = Color.White),
+            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.onPrimary),
             textAlign = TextAlign.Center
         )
     }
 }
 
 @Composable
-fun DotSeparator(size: Dp = 4.dp, color: Color = TextDarkGray) {
+fun DotSeparator(size: Dp = 4.dp, color: Color = MaterialTheme.colorScheme.onSurfaceVariant) {
     Box(
         modifier = Modifier
             .size(size)
