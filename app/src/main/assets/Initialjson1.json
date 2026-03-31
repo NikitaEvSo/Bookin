@@ -1,0 +1,22 @@
+[
+  {
+    "type": "MESSAGE_BLOCK",
+    "data": {
+      "text": "Commission paid on bookings and other factors may affect property rankings. Learn about these ranking parameteters and how to select and modify them. Find out more"
+    }
+  },
+  {
+    "type": "PROPERTIES_COUNT",
+    "data": {
+      "count": 748
+    }
+  },
+  {
+    "type": "ROOM_CARDS",
+    "data": {}
+  },
+  {
+    "type": "QUALITY_RATING",
+    "data": {}
+  }
+]

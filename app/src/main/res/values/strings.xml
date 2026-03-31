@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">Bookinf</string>
+    <string name="app_name" translatable="false">Bookinf</string>
+    <string name="app_version" translatable="false">1.0</string>
+    <string name="bed_count">Hotel room: 2 beds</string>
+    <string name="price_for">Price for 1 night, 2 adults</string>
+    <string name="taxes">Includes taxes and charges</string>
+    <string name="last">Only 1 left at this price on Booking.com</string>
+
+    <!-- Rating texts -->
+    <string name="rating_fabulous">Fabulous</string>
+    <string name="rating_good">Good</string>
+    <string name="rating_na" translatable="false">N/A</string>
+
+    <!-- Formatting strings -->
+    <string name="distance_km">%.1f km from centre</string>
+    <string name="distance_m">%d m from centre</string>
+    <string name="reviews_count">%d reviews</string>
+
+    <!-- Other UI labels -->
+    <string name="sustainability">Sustainability certification</string>
+    <string name="no_prepayment">No prepayment needed</string>
+    <string name="sustainability_certification">Sustainability certification</string>
+    <string name="example">Example</string>
+    <string name="no_prepayment_needed">No prepayment needed</string>
 </resources>
